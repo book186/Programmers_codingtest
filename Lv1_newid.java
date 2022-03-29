@@ -1,25 +1,27 @@
 /*
- * 1´Ü°è new_idÀÇ ¸ğµç ´ë¹®ÀÚ¸¦ ´ëÀÀµÇ´Â ¼Ò¹®ÀÚ·Î Ä¡È¯ÇÕ´Ï´Ù.
- * 2´Ü°è new_id¿¡¼­ ¾ËÆÄºª ¼Ò¹®ÀÚ, ¼ıÀÚ, »©±â(-), ¹ØÁÙ(_), ¸¶Ä§Ç¥(.)¸¦ Á¦¿ÜÇÑ ¸ğµç ¹®ÀÚ¸¦ Á¦°ÅÇÕ´Ï´Ù.
- * 3´Ü°è new_id¿¡¼­ ¸¶Ä§Ç¥(.)°¡ 2¹ø ÀÌ»ó ¿¬¼ÓµÈ ºÎºĞÀ» ÇÏ³ªÀÇ ¸¶Ä§Ç¥(.)·Î Ä¡È¯ÇÕ´Ï´Ù.
- * 4´Ü°è new_id¿¡¼­ ¸¶Ä§Ç¥(.)°¡ Ã³À½ÀÌ³ª ³¡¿¡ À§Ä¡ÇÑ´Ù¸é Á¦°ÅÇÕ´Ï´Ù.
- * 5´Ü°è new_id°¡ ºó ¹®ÀÚ¿­ÀÌ¶ó¸é, new_id¿¡ "a"¸¦ ´ëÀÔÇÕ´Ï´Ù.
- * 6´Ü°è new_idÀÇ ±æÀÌ°¡ 16ÀÚ ÀÌ»óÀÌ¸é, new_idÀÇ Ã¹ 15°³ÀÇ ¹®ÀÚ¸¦ Á¦¿ÜÇÑ ³ª¸ÓÁö ¹®ÀÚµéÀ» ¸ğµÎ Á¦°ÅÇÕ´Ï´Ù.
- *		¸¸¾à Á¦°Å ÈÄ ¸¶Ä§Ç¥(.)°¡ new_idÀÇ ³¡¿¡ À§Ä¡ÇÑ´Ù¸é ³¡¿¡ À§Ä¡ÇÑ ¸¶Ä§Ç¥(.) ¹®ÀÚ¸¦ Á¦°ÅÇÕ´Ï´Ù.
- * 7´Ü°è new_idÀÇ ±æÀÌ°¡ 2ÀÚ ÀÌÇÏ¶ó¸é, new_idÀÇ ¸¶Áö¸· ¹®ÀÚ¸¦ new_idÀÇ ±æÀÌ°¡ 3ÀÌ µÉ ¶§±îÁö ¹İº¹ÇØ¼­ ³¡¿¡ ºÙÀÔ´Ï´Ù.
+ * 1ë‹¨ê³„ new_idì˜ ëª¨ë“  ëŒ€ë¬¸ìë¥¼ ëŒ€ì‘ë˜ëŠ” ì†Œë¬¸ìë¡œ ì¹˜í™˜í•©ë‹ˆë‹¤.
+ * 2ë‹¨ê³„ new_idì—ì„œ ì•ŒíŒŒë²³ ì†Œë¬¸ì, ìˆ«ì, ë¹¼ê¸°(-), ë°‘ì¤„(_), ë§ˆì¹¨í‘œ(.)ë¥¼ ì œì™¸í•œ ëª¨ë“  ë¬¸ìë¥¼ ì œê±°í•©ë‹ˆë‹¤.
+ * 3ë‹¨ê³„ new_idì—ì„œ ë§ˆì¹¨í‘œ(.)ê°€ 2ë²ˆ ì´ìƒ ì—°ì†ëœ ë¶€ë¶„ì„ í•˜ë‚˜ì˜ ë§ˆì¹¨í‘œ(.)ë¡œ ì¹˜í™˜í•©ë‹ˆë‹¤.
+ * 4ë‹¨ê³„ new_idì—ì„œ ë§ˆì¹¨í‘œ(.)ê°€ ì²˜ìŒì´ë‚˜ ëì— ìœ„ì¹˜í•œë‹¤ë©´ ì œê±°í•©ë‹ˆë‹¤.
+ * 5ë‹¨ê³„ new_idê°€ ë¹ˆ ë¬¸ìì—´ì´ë¼ë©´, new_idì— "a"ë¥¼ ëŒ€ì…í•©ë‹ˆë‹¤.
+ * 6ë‹¨ê³„ new_idì˜ ê¸¸ì´ê°€ 16ì ì´ìƒì´ë©´, new_idì˜ ì²« 15ê°œì˜ ë¬¸ìë¥¼ ì œì™¸í•œ ë‚˜ë¨¸ì§€ ë¬¸ìë“¤ì„ ëª¨ë‘ ì œê±°í•©ë‹ˆë‹¤.
+ *		ë§Œì•½ ì œê±° í›„ ë§ˆì¹¨í‘œ(.)ê°€ new_idì˜ ëì— ìœ„ì¹˜í•œë‹¤ë©´ ëì— ìœ„ì¹˜í•œ ë§ˆì¹¨í‘œ(.) ë¬¸ìë¥¼ ì œê±°í•©ë‹ˆë‹¤.
+ * 7ë‹¨ê³„ new_idì˜ ê¸¸ì´ê°€ 2ì ì´í•˜ë¼ë©´, new_idì˜ ë§ˆì§€ë§‰ ë¬¸ìë¥¼ new_idì˜ ê¸¸ì´ê°€ 3ì´ ë  ë•Œê¹Œì§€ ë°˜ë³µí•´ì„œ ëì— ë¶™ì…ë‹ˆë‹¤.
  */
 public class Lv1_newid {
 	public static String solution(String new_id) {
-		String answer = new_id.toLowerCase(); // 1´Ü°è ´Ù ¼Ò¹®ÀÚ·Î
+		String answer = "";
+		
+		answer = new_id.toLowerCase();
 		answer = answer.replaceAll("[^a-z0-9-_.]", "");
 		answer = answer.replaceAll("[.]{2,}", ".");
 		
 		if (answer.startsWith(".")) {
-			answer = answer.substring(1 , answer.length());
+			answer = answer.substring(1, answer.length());
 		}
 		
 		if (answer.endsWith(".")) {
-			answer = answer.substring(0, answer.length()-1);
+			answer = answer.substring(0, answer.length() -1);
 		}
 		
 		if (answer.length() == 0) {
@@ -30,15 +32,13 @@ public class Lv1_newid {
 			answer = answer.substring(0, 15);
 		}
 		
-		if (answer.endsWith(".") ) {
-			answer = answer.substring(0, answer.length()-1);
+		if (answer.endsWith(".")) {
+			answer = answer.substring(0, answer.length() -1);
 		}
 		
-		if (answer.length() == 2) {
-			answer += answer.charAt(answer.length()-1);
-		} else if (answer.length() == 1) {
-			for (int i = 0; i < 2; i++) {
-				answer += answer.charAt(answer.length()-1);
+		if (answer.length() <= 2) {
+			while(answer.length() < 3) {
+				answer += answer.charAt(answer.length() - 1);
 			}
 		}
 		
@@ -52,9 +52,9 @@ public class Lv1_newid {
 	}
 }
 /*
-¿¹1	"...!@BaT#*..y.abcdefghijklm"	"bat.y.abcdefghi"
-¿¹2	"z-+.^."						"z--"
-¿¹3	"=.="							"aaa"
-¿¹4	"123_.def"						"123_.def"
-¿¹5	"abcdefghijklmn.p"				"abcdefghijklmn"
+ì˜ˆ1	"...!@BaT#*..y.abcdefghijklm"	"bat.y.abcdefghi"
+ì˜ˆ2	"z-+.^."						"z--"
+ì˜ˆ3	"=.="							"aaa"
+ì˜ˆ4	"123_.def"						"123_.def"
+ì˜ˆ5	"abcdefghijklmn.p"				"abcdefghijklmn"
 */
