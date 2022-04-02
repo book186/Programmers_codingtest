@@ -2,14 +2,14 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 /*
-1. id_list¸¦ HashMap<String, Integer> idList¿¡ ´ã±â : id, cnt
-2. report¸¦ HashMap<String, HashSet<String>> toReport¿¡ ´ã±â : id, ½Å°íÇÑ»ç¶÷
-  (½Å°í´çÇÑ»ç¶÷ÀÌ K, ½Å°íÇÑ»ç¶÷ÀÌ V·Î µé¾î°¡´Âµ¥.. ½Å°íÇÑ»ç¶÷ÀÌ Áßº¹µÇ¸é ¾ÈµÇ±â ¶§¹®¿¡)
-  (ÀÌ¶§ report´Â splieÇØ¼­ ³Ö¾îÁÖ±â)
-3. toReportÀÇ key°ª¸¸Å­¸¸ µ¹±â
-4. toReportÀÇ K°ª size°¡ kº¸´Ù Å©°Å³ª °°À»°æ¿ì¿¡¸¸ ¾Æ·¡ ÁøÇà
-5. toReportÀÇ V ½Å°íÇÑ»ç¶÷ ¸¸Å­ for¹® µ¹¸é¼­ Å½»ö
-6. Integer cnt¿¡ idListÀÇ V cnt°ª ¹Ş¾Æ¼­ +1 ÇØÁÖ°í answer¿¡ ³Ö¾î¼­ ¸®ÅÏ
+1. id_listë¥¼ HashMap<String, Integer> idListì— ë‹´ê¸° : id, cnt
+2. reportë¥¼ HashMap<String, HashSet<String>> toReportì— ë‹´ê¸° : id, ì‹ ê³ í•œì‚¬ëŒ
+  (ì‹ ê³ ë‹¹í•œì‚¬ëŒì´ K, ì‹ ê³ í•œì‚¬ëŒì´ Vë¡œ ë“¤ì–´ê°€ëŠ”ë°.. ì‹ ê³ í•œì‚¬ëŒì´ ì¤‘ë³µë˜ë©´ ì•ˆë˜ê¸° ë•Œë¬¸ì—)
+  (ì´ë•Œ reportëŠ” splieí•´ì„œ ë„£ì–´ì£¼ê¸°)
+3. toReportì˜ keyê°’ë§Œí¼ë§Œ ëŒê¸°
+4. toReportì˜ Kê°’ sizeê°€ kë³´ë‹¤ í¬ê±°ë‚˜ ê°™ì„ê²½ìš°ì—ë§Œ ì•„ë˜ ì§„í–‰
+5. toReportì˜ V ì‹ ê³ í•œì‚¬ëŒ ë§Œí¼ forë¬¸ ëŒë©´ì„œ íƒìƒ‰
+6. Integer cntì— idListì˜ V cntê°’ ë°›ì•„ì„œ +1 í•´ì£¼ê³  answerì— ë„£ì–´ì„œ ë¦¬í„´
 */
 class Lv1_singo {
     public int[] solution(String[] id_list, String[] report, int k) {
